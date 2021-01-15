@@ -1,0 +1,170 @@
+@using LearningPlatform.Services
+@model List<LearningPlatform.Models.CourseModels.Course> 
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "_Layout";
+    string mode, showStudents;
+ @(mode = ViewBag.Advanced ? "true" : "false")
+ @(showStudents = ViewBag.ShowStudents ? "true" : "false")
+}
+
+<form asp-route-advanced="@mode" asp-route-showStudents="@showStudents" asp-action="Search" method="post" >
+    <div class="container p-3">
+        <div class="row mb-2">
+            <div class="col-3">   
+                <p>Sorting criteria</p>
+            </div>
+            <div class="col-3">   
+                <select name="sortOption" class="form-control custom-select">
+                    <option>Default</option>
+                    <option>Name</option>
+                    <option>Description</option>
+                    <option>Rating</option>
+                    <option>Enrollments</option>
+                </select>
+
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-3">   
+                <p>Order</p>
+            </div>
+            <div class="col-3">   
+                <select class="form-control custom-select" name="order">
+                    <option>Default</option>
+                    <option>Ascending</option>
+                    <option>Descending</option>
+                </select>
+            </div>        
+        </div>
+    </div>
+        @if (ViewBag.Advanced)
+        {
+            <p>Number of shown entries</p>
+            <input class="m-1 form-control w-25" name="numberEntries" type="number" min="1" max="@ViewBag.MaxEntries" value="Number of shown entries"/>
+            <a class="m-1 btn btn-info" asp-action="Search" asp-route-advanced="false">Simple mode</a>
+              @if (ViewBag.ShowStudents)
+              {
+                  <a class="m-1 btn btn-info" asp-action="Search" asp-route-advanced="true" asp-route-showStudents="false">Hide students table</a>
+              }
+              else
+              {
+                  <a class="m-1 btn btn-info" asp-action="Search" asp-route-advanced="true" asp-route-showStudents="true">Show the most active students</a>
+              }
+        }
+        else
+        {
+            <a class="btn btn-info" asp-action="Search" asp-route-advanced="true">Advanced options</a>
+        }
+        <input class="btn btn-primary" type="submit" value="Search"/>
+    </form>
+
+<br/><br/>
+
+@if (ViewBag.ShowStudents)
+{
+    <p class="lead">The most active students</p>
+ @if (ViewBag.Students.Count > 0)
+ {
+     <table class="table table-bordered table-hover table-striped" style="width: 100%">
+         <thead class="thead">
+         <tr>
+             <th>Name</th>
+             <th>Surname</th>
+             <th>Username</th>
+             <th>Number of enrollments in presented courses</th>
+             <td></td>
+         </tr>
+         </thead>
+         <tbody>
+         @foreach (var student in ViewBag.Students)
+         {
+             <tr>
+                 @* <td class="text-center">@student.Id</td> *@
+                 <td class="text-center">@student.Name</td>
+                 <td class="text-center">@student.Surname</td>
+                 <td class="text-center">@student.Username</td>
+                 <td class="text-center">@(ViewData["student" + student.Id + "Enrollments"])</td>
+                 <td>
+                     @if ((StudentService.LoggedInStudent != null && StudentService.LoggedInStudent.Id == student.Id && !StudentService.IsAdmin) || StudentService.IsAdmin)
+                     {
+                     <a asp-controller="Home" asp-route-studentId="@student.Id" asp-action="ViewEnrollments" class="btn btn-primary">View enrollments</a>
+                     }
+                 </td> 
+             </tr>
+         }
+         </tbody>
+     </table>
+ }
+ 
+ else
+ {
+     <p>No students to show</p>
+ }
+   
+}
+
+<p class="lead">Courses found</p>
+@if (Model.Any())
+{
+    
+    <table class="table table-bordered table-hover table-striped" style="width: 100%">
+        <thead class="thead">
+        <tr>
+            <th></th>
+            <th>Course name </th>
+            <th>Course description</th>
+            <td>Enrollments</td>
+            <td>Avg. review</td>
+            <th></th>
+        </tr>
+        </thead> 
+        <tbody>
+        @foreach (var course in Model)
+        {
+            <tr>
+                 <td>
+                     <img src="~/images/@course.CoverImage"   
+                          class="rounded-circle"   
+                          height="40" width="40"   
+                          asp-append-version="true" />   
+                 </td>           
+                <td width="20%">@course.Name </td>
+
+                <td>@course.Description</td>
+                <td>@course.Enrollments.Count</td>
+                <td>@course.AverageReview</td>
+                
+                <td class="text-center" width="25%">
+                    <div class="btn-group d-flex" role="group">
+                        @if (StudentService.IsAdmin)
+                        {
+                            <a asp-route-courseId="@course.Id" asp-action="Edit" class="btn btn-primary mx-2">Edit</a>
+                            <a asp-route-courseId="@course.Id" asp-action="Delete" class="btn btn-danger mx-2">Delete</a>
+                            <a asp-route-courseId="@course.Id" asp-action="ViewCourse" class="btn btn-info mx-2">View</a>
+                        }
+                        else
+                        {
+                            <a asp-route-courseId="@course.Id" asp-action="ViewCourse" class="btn btn-info mx-5">View</a>
+                        }
+
+                    </div>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+else
+{
+    <p>No course exists.</p>
+}
+
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}

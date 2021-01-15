@@ -1,0 +1,79 @@
+@model LearningPlatform.ViewModels.StudyCourseViewModel
+
+@{
+    ViewBag.Title = "Edit lesson";
+    Layout = "_LayoutNotInContainer";
+}
+<style>
+    #nav-container {
+    padding-left: 250px;
+    }
+</style>
+
+<div class="container-fluid" style="margin: 0; padding: 0;">
+    <div class="row-fluid">
+        <div class="wrapper" style="margin-left: 145px;">
+    
+            <partial name="_CourseNav"/>
+            <div class="container">
+                <form method="post" asp-route-courseId="@Model.Course.Id" asp-route-moduleId="@Model.Module.Id"
+                      asp-route-lessonId="@Model.Lesson.Id"
+                      asp-route-oldOrder="@Model.Lesson.Order" asp-controller="Lesson" asp-action="EditLesson">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <p>Lesson id: @Model.Lesson.Id</p>
+                    <input asp-for="@Model.Lesson.Id" hidden/>
+                    <input asp-for="@Model.Lesson.ModuleId" hidden/>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label asp-for="Lesson.Name"></label>
+                                    <input value="@Model.Lesson.Name" asp-for="Lesson.Name" class="form-control"/>
+                                    <span asp-validation-for="Lesson.Name" class="text-danger"></span>
+                                </div>
+                                 <div class="col-2">
+                                     <a class="btn btn-danger" asp-action="DeleteLesson" asp-route-lessonId="@Model.Lesson.Id" asp-route-courseId="@Model.Course.Id">Delete</a> 
+                                 </div>                               
+                            </div>
+                     
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label asp-for="Lesson.Order"></label>
+                                    <input type="number" min="0" max="@(Model.Module.Lessons.Count + Model.Module.Assignments.Count - 1)" value="@Model.Lesson.Order" asp-for="Lesson.Order" class="form-control"/>
+                                    <span asp-validation-for="Lesson.Order" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label asp-for="Lesson.Content"></label>
+                                    <textarea  asp-for="Lesson.Content" class="form-control">@Model.Lesson.Content</textarea>
+                                    <span asp-validation-for="Lesson.Content" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-8 offset-4 row">
+                                    <div class="col">
+                                        <input type="submit" class="btn btn-info w-100" value="Save"/>
+                                    </div>
+                                    <div class="col">
+                                        <a asp-action="Study" asp-controller="Course" asp-route-courseId="@Model.Course.Id" class="btn btn-primary btn-success w-100">Back</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>          
+        
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}

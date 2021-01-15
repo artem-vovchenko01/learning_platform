@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EmulatedDb xmlns:i="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://schemas.datacontract.org/2004/07/LearningPlatform.Models">
+    <AnswerAssignments xmlns:d2p1="http://schemas.datacontract.org/2004/07/LearningPlatform.Models.AnswerModels">
+        <d2p1:AnswerAssignment>
+            <d2p1:AssignmentId>4</d2p1:AssignmentId>
+            <d2p1:AttemptsTaken>3</d2p1:AttemptsTaken>
+            <d2p1:Id>5</d2p1:Id>
+            <d2p1:LastTrial>2020-11-16T12:05:17.8714896</d2p1:LastTrial>
+            <d2p1:StudentId>3</d2p1:StudentId>
+        </d2p1:AnswerAssignment>
+    </AnswerAssignments>
+    <AnswerQuestionOptions xmlns:d2p1="http://schemas.datacontract.org/2004/07/LearningPlatform.Models.AnswerModels">
+        <d2p1:AnswerQuestionOption>
+            <d2p1:AnswerAssignmentId>5</d2p1:AnswerAssignmentId>
+            <d2p1:Correct>false</d2p1:Correct>
+            <d2p1:Id>22</d2p1:Id>
+            <d2p1:QuestionOptionId>23</d2p1:QuestionOptionId>
+        </d2p1:AnswerQuestionOption>
+        <d2p1:AnswerQuestionOption>
+            <d2p1:AnswerAssignmentId>5</d2p1:AnswerAssignmentId>
+            <d2p1:Correct>true</d2p1:Correct>
+            <d2p1:Id>23</d2p1:Id>
+            <d2p1:QuestionOptionId>24</d2p1:QuestionOptionId>
+        </d2p1:AnswerQuestionOption>
+        <d2p1:AnswerQuestionOption>
+            <d2p1:AnswerAssignmentId>5</d2p1:AnswerAssignmentId>
+            <d2p1:Correct>false</d2p1:Correct>
+            <d2p1:Id>24</d2p1:Id>
+            <d2p1:QuestionOptionId>25</d2p1:QuestionOptionId>
+        </d2p1:AnswerQuestionOption>
+        <d2p1:AnswerQuestionOption>
+            <d2p1:AnswerAssignmentId>5</d2p1:AnswerAssignmentId>
+            <d2p1:Correct>true</d2p1:Correct>
+            <d2p1:Id>25</d2p1:Id>
+            <d2p1:QuestionOptionId>26</d2p1:QuestionOptionId>
+        </d2p1:AnswerQuestionOption>
+        <d2p1:AnswerQuestionOption>
+            <d2p1:AnswerAssignmentId>5</d2p1:AnswerAssignmentId>
+            <d2p1:Correct>true</d2p1:Correct>
+            <d2p1:Id>26</d2p1:Id>
+            <d2p1:QuestionOptionId>27</d2p1:QuestionOptionId>
+        </d2p1:AnswerQuestionOption>
+        <d2p1:AnswerQuestionOption>
+            <d2p1:AnswerAssignmentId>5</d2p1:AnswerAssignmentId>
+            <d2p1:Correct>false</d2p1:Correct>
+            <d2p1:Id>27</d2p1:Id>
+            <d2p1:QuestionOptionId>28</d2p1:QuestionOptionId>
+        </d2p1:AnswerQuestionOption>
+        <d2p1:AnswerQuestionOption>
+            <d2p1:AnswerAssignmentId>5</d2p1:AnswerAssignmentId>
+            <d2p1:Correct>true</d2p1:Correct>
+            <d2p1:Id>28</d2p1:Id>
+            <d2p1:QuestionOptionId>29</d2p1:QuestionOptionId>
+        </d2p1:AnswerQuestionOption>
+    </AnswerQuestionOptions>
+    <AnswerThoughts xmlns:d2p1="http://schemas.datacontract.org/2004/07/LearningPlatform.Models.AnswerModels" />
+    <Assignments xmlns:d2p1="http://schemas.datacontract.org/2004/07/LearningPlatform.Models.AssignmentModels">
+        <d2p1:Assignment>
+            <d2p1:Description>Apply knowledge from lesson 1</d2p1:Description>
+            <d2p1:Duration>50</d2p1:Duration>
+            <d2p1:Id>4</d2p1:Id>
+            <d2p1:MaxTrials>0</d2p1:MaxTrials>
+            <d2p1:ModuleId>3</d2p1:ModuleId>
+            <d2p1:Name>Identifiers</d2p1:Name>
+            <d2p1:Order>1</d2p1:Order>
+            <d2p1:RateToPass>85</d2p1:RateToPass>
+        </d2p1:Assignment>
+    </Assignments>
+    <CourseCategories xmlns:d2p1="http://schemas.datacontract.org/2004/07/LearningPlatform.Models.CourseModels">
+        <d2p1:CourseCategory>
+            <d2p1:CoverImage>e6e9ecf7-37c5-4591-921e-b2b0f282e867_programming.jpg</d2p1:CoverImage>
+            <d2p1:Id>6</d2p1:Id>
+            <d2p1:Name>Programming</d2p1:Name>
+        </d2p1:CourseCategory>
+        <d2p1:CourseCategory>
+            <d2p1:CoverImage>cd47bb09-01a9-4a9e-9bf3-baad882cc394_math.jpg</d2p1:CoverImage>
+            <d2p1:Id>7</d2p1:Id>
+            <d2p1:Name>Math</d2p1:Name>
+        </d2p1:CourseCategory>
+    </CourseCategories>
+    <CourseTeachers xmlns:d2p1="http://schemas.datacontract.org/2004/07/LearningPlatform.Models.ConnectionModels" />
+    <Courses xmlns:d2p1="http://schemas.datacontract.org/2004/07/LearningPlatform.Models.CourseModels">
+        <d2p1:Course>
+            <d2p1:CourseCategoryId>6</d2p1:CourseCategoryId>
+            <d2p1:CoverImage>beff2c5a-055b-4a6a-8559-020992e217ea_pycode.jpeg</d2p1:CoverImage>
+            <d2p1:Description>Python for everybody</d2p1:Description>
+            <d2p1:Id>10</d2p1:Id>
+            <d2p1:Language>English</d2p1:Language>
+            <d2p1:Name>Python</d2p1:Name>
+            <d2p1:RateToPass>80</d2p1:RateToPass>
+            <d2p1:TimeToPass>10</d2p1:TimeToPass>
+        </d2p1:Course>
+        <d2p1:Course>
+            <d2p1:CourseCategoryId>7</d2p1:CourseCategoryId>
+            <d2p1:CoverImage>0660df9f-41d0-403b-9265-20dc86b0e8f3_linal.png</d2p1:CoverImage>
+            <d2p1:Description>University level linear algebra. Learn matrices, vectors, complex geometrics etc.</d2p1:Description>
+            <d2p1:Id>11</d2p1:Id>
+            <d2p1:Language>English</d2p1:Language>
+            <d2p1:Name>Linear algebra</d2p1:Name>
+            <d2p1:RateToPass>90</d2p1:RateToPass>
+            <d2p1:TimeToPass>10</d2p1:TimeToPass>
+        </d2p1:Course>
+        <d2p1:Course>
+            <d2p1:CourseCategoryId>6</d2p1:CourseCategoryId>
+            <d2p1:CoverImage>8c2f6d07-6ad2-4228-bd95-7ab655c0b70c_java.jpg</d2p1:CoverImage>
+            <d2p1:Description>java</d2p1:Description>
+            <d2p1:Id>15</d2p1:Id>
+            <d2p1:Language>English</d2p1:Language>
+            <d2p1:Name>Java</d2p1:Name>
+            <d2p1:RateToPass>85</d2p1:RateToPass>
+            <d2p1:TimeToPass>10</d2p1:TimeToPass>
+        </d2p1:Course>
+    </Courses>
+    <Enrollments xmlns:d2p1="http://schemas.datacontract.org/2004/07/LearningPlatform.Models.ConnectionModels">
+        <d2p1:Enrollment>
+            <d2p1:CourseId>10</d2p1:CourseId>
+            <d2p1:Id>0</d2p1:Id>
+            <d2p1:StudentId>3</d2p1:StudentId>
+        </d2p1:Enrollment>
+        <d2p1:Enrollment>
+            <d2p1:CourseId>15</d2p1:CourseId>
+            <d2p1:Id>0</d2p1:Id>
+            <d2p1:StudentId>3</d2p1:StudentId>
+        </d2p1:Enrollment>
+    </Enrollments>
+    <Lessons xmlns:d2p1="http://schemas.datacontract.org/2004/07/LearningPlatform.Models.ModuleModels">
+        <d2p1:Lesson>
+            <d2p1:Content>valid and invalid identifiers
+
+Valid:
+var123
+my_var
+Invalid
+1var</d2p1:Content>
+            <d2p1:Id>4</d2p1:Id>
+            <d2p1:ModuleId>3</d2p1:ModuleId>
+            <d2p1:Name>Variables</d2p1:Name>
+            <d2p1:Order>0</d2p1:Order>
+        </d2p1:Lesson>
+    </Lessons>
+    <Modules xmlns:d2p1="http://schemas.datacontract.org/2004/07/LearningPlatform.Models.ModuleModels">
+        <d2p1:Module>
+            <d2p1:CourseId>10</d2p1:CourseId>
+            <d2p1:Description>You'll learn about variables, loops and conditional statements</d2p1:Description>
+            <d2p1:Id>3</d2p1:Id>
+            <d2p1:Name>Basic constructs</d2p1:Name>
+        </d2p1:Module>
+    </Modules>
+    <QuestionOptions xmlns:d2p1="http://schemas.datacontract.org/2004/07/LearningPlatform.Models.AssignmentModels">
+        <d2p1:QuestionOption>
+            <d2p1:Correct>true</d2p1:Correct>
+            <d2p1:Id>23</d2p1:Id>
+            <d2p1:QuestionId>8</d2p1:QuestionId>
+            <d2p1:Text>var123</d2p1:Text>
+        </d2p1:QuestionOption>
+        <d2p1:QuestionOption>
+            <d2p1:Correct>false</d2p1:Correct>
+            <d2p1:Id>24</d2p1:Id>
+            <d2p1:QuestionId>8</d2p1:QuestionId>
+            <d2p1:Text>my@var</d2p1:Text>
+        </d2p1:QuestionOption>
+        <d2p1:QuestionOption>
+            <d2p1:Correct>false</d2p1:Correct>
+            <d2p1:Id>25</d2p1:Id>
+            <d2p1:QuestionId>8</d2p1:QuestionId>
+            <d2p1:Text>1var</d2p1:Text>
+        </d2p1:QuestionOption>
+        <d2p1:QuestionOption>
+            <d2p1:Correct>false</d2p1:Correct>
+            <d2p1:Id>26</d2p1:Id>
+            <d2p1:QuestionId>9</d2p1:QuestionId>
+            <d2p1:Text>True</d2p1:Text>
+        </d2p1:QuestionOption>
+        <d2p1:QuestionOption>
+            <d2p1:Correct>true</d2p1:Correct>
+            <d2p1:Id>27</d2p1:Id>
+            <d2p1:QuestionId>9</d2p1:QuestionId>
+            <d2p1:Text>first_digit</d2p1:Text>
+        </d2p1:QuestionOption>
+        <d2p1:QuestionOption>
+            <d2p1:Correct>true</d2p1:Correct>
+            <d2p1:Id>28</d2p1:Id>
+            <d2p1:QuestionId>9</d2p1:QuestionId>
+            <d2p1:Text>v_123</d2p1:Text>
+        </d2p1:QuestionOption>
+        <d2p1:QuestionOption>
+            <d2p1:Correct>false</d2p1:Correct>
+            <d2p1:Id>29</d2p1:Id>
+            <d2p1:QuestionId>9</d2p1:QuestionId>
+            <d2p1:Text>nonlocal</d2p1:Text>
+        </d2p1:QuestionOption>
+    </QuestionOptions>
+    <Questions xmlns:d2p1="http://schemas.datacontract.org/2004/07/LearningPlatform.Models.AssignmentModels">
+        <d2p1:Question>
+            <d2p1:AssignmentId>4</d2p1:AssignmentId>
+            <d2p1:CreationDate>2020-11-16T11:28:21.4267428</d2p1:CreationDate>
+            <d2p1:Id>8</d2p1:Id>
+            <d2p1:IsMultipleChoice>false</d2p1:IsMultipleChoice>
+            <d2p1:MaxGrade>2</d2p1:MaxGrade>
+            <d2p1:Name>Choose valid identifier</d2p1:Name>
+        </d2p1:Question>
+        <d2p1:Question>
+            <d2p1:AssignmentId>4</d2p1:AssignmentId>
+            <d2p1:CreationDate>2020-11-16T11:28:59.8953348</d2p1:CreationDate>
+            <d2p1:Id>9</d2p1:Id>
+            <d2p1:IsMultipleChoice>true</d2p1:IsMultipleChoice>
+            <d2p1:MaxGrade>3</d2p1:MaxGrade>
+            <d2p1:Name>Choose valid identifiers</d2p1:Name>
+        </d2p1:Question>
+    </Questions>
+    <Reviews xmlns:d2p1="http://schemas.datacontract.org/2004/07/LearningPlatform.Models.CourseModels">
+        <d2p1:Review>
+            <d2p1:CourseId>10</d2p1:CourseId>
+            <d2p1:DateTime>2020-11-16T11:37:48.2539566</d2p1:DateTime>
+            <d2p1:Id>7</d2p1:Id>
+            <d2p1:Rank>5</d2p1:Rank>
+            <d2p1:StudentId>3</d2p1:StudentId>
+            <d2p1:Text>This course is amazing. I learned basics of Python literally in 3 weeks despite I'm new to programming! Thank you teachers!:)</d2p1:Text>
+        </d2p1:Review>
+        <d2p1:Review>
+            <d2p1:CourseId>10</d2p1:CourseId>
+            <d2p1:DateTime>2020-11-16T11:38:58.4247149</d2p1:DateTime>
+            <d2p1:Id>8</d2p1:Id>
+            <d2p1:Rank>3</d2p1:Rank>
+            <d2p1:StudentId>1</d2p1:StudentId>
+            <d2p1:Text>I'm admin. I post whatever I want! Whooohoooh!!</d2p1:Text>
+        </d2p1:Review>
+        <d2p1:Review>
+            <d2p1:CourseId>10</d2p1:CourseId>
+            <d2p1:DateTime>2020-11-16T11:39:11.1793679</d2p1:DateTime>
+            <d2p1:Id>9</d2p1:Id>
+            <d2p1:Rank>2</d2p1:Rank>
+            <d2p1:StudentId>1</d2p1:StudentId>
+            <d2p1:Text>Comment just to test my new feature ....</d2p1:Text>
+        </d2p1:Review>
+    </Reviews>
+    <Students xmlns:d2p1="http://schemas.datacontract.org/2004/07/LearningPlatform.Models.UserModels">
+        <d2p1:Student>
+            <d2p1:Age>18</d2p1:Age>
+            <d2p1:Country>Ukarine</d2p1:Country>
+            <d2p1:Gender>Male</d2p1:Gender>
+            <d2p1:Id>1</d2p1:Id>
+            <d2p1:Name>admin</d2p1:Name>
+            <d2p1:Password>admin</d2p1:Password>
+            <d2p1:RegistrationDate>0001-01-01T00:00:00</d2p1:RegistrationDate>
+            <d2p1:Surname>admin</d2p1:Surname>
+            <d2p1:Username>admin</d2p1:Username>
+        </d2p1:Student>
+        <d2p1:Student>
+            <d2p1:Age>18</d2p1:Age>
+            <d2p1:Country>Ukarine</d2p1:Country>
+            <d2p1:Gender>Male</d2p1:Gender>
+            <d2p1:Id>3</d2p1:Id>
+            <d2p1:Name>Artem</d2p1:Name>
+            <d2p1:Password>1111</d2p1:Password>
+            <d2p1:RegistrationDate>0001-01-01T00:00:00</d2p1:RegistrationDate>
+            <d2p1:Surname>Vovchenko</d2p1:Surname>
+            <d2p1:Username>artem</d2p1:Username>
+        </d2p1:Student>
+    </Students>
+    <Teachers xmlns:d2p1="http://schemas.datacontract.org/2004/07/LearningPlatform.Models.UserModels" />
+    <Thoughts xmlns:d2p1="http://schemas.datacontract.org/2004/07/LearningPlatform.Models.AssignmentModels" />
+</EmulatedDb>

@@ -1,0 +1,107 @@
+@model LearningPlatform.ViewModels.CreateCourseViewModel;
+
+@{
+    ViewBag.Title = "Editing course";
+    Layout = "_Layout";
+}
+
+
+<form enctype="multipart/form-data" method="post" asp-action="Edit">
+    <input asp-for="Course.Id" hidden/>
+    <div class="border p-3">
+        <div class="form-group row">
+            <h2 class="text-info pl-3">Edit course</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="Course.Name"></label>
+                    <input asp-for="Course.Name" class="form-control"/>
+                    <span asp-validation-for="Course.Name" class="text-danger"></span>
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="Course.Description"></label>
+                    <input asp-for="Course.Description" class="form-control"/>
+                    <span asp-validation-for="Course.Description" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="Course.Language"></label>
+                    <input asp-for="Course.Language" class="form-control"/>
+                    <span asp-validation-for="Course.Language" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="Course.CourseCategoryId">Course category</label>
+                    <select asp-for="Course.CourseCategoryId" asp-items="Model.CourseCategories" class="form-control"></select>
+                    <span asp-validation-for="Course.CourseCategoryId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="Course.RateToPass">Rate to pass (in % from 0 to 100)</label>
+                    <input type="number" min="0" max="100" asp-for="Course.RateToPass" class="form-control"/>
+                    <span asp-validation-for="Course.RateToPass" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="Course.TimeToPass">Expected ime to pass (in weeks)</label>
+                    <input type="number" min="0" asp-for="Course.TimeToPass" class="form-control"/>
+                    <span asp-validation-for="Course.TimeToPass" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="CoverPicture" class="control-label">Cover picture</label>
+                    <div class="custom-file">
+                        <input hidden name="oldPicture" value="@Model.Course.CoverImage"/>
+                        <input asp-for="CoverPicture" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">Choose updated image if needed</label>
+                    </div>
+                    <span asp-validation-for="CoverPicture" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-8 offset-4 row">
+                    <div class="col">
+                        <input type="submit" class="btn btn-info w-100" value="Update"/>
+                    </div>
+                    <div class="col">
+                        <a asp-action="Index" class="btn btn-primary btn-success w-100">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+
+    <script type="text/javascript">  
+            // Add the following code if you want the name of the file appear on select  
+            $(".custom-file-input").on("change", function () {  
+                var fileName = $(this).val().split("\\").pop();  
+                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);  
+            });  
+        </script>
+
+}

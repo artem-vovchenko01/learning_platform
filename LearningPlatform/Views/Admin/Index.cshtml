@@ -1,0 +1,61 @@
+@model LearningPlatform.ViewModels.AdminViewModel
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "_Layout";
+}
+
+<a class="btn btn-primary" asp-action="SerializeDb">Serialize database to XML</a>
+<a class="btn btn-info" asp-action="RestoreDatabase">Restore database from XML</a>
+<a class="btn btn-danger" asp-action="WipeDatabase">Wipe database</a>
+
+@if (Model.Students.Any())
+{
+    <table class="table table-bordered table-hover table-striped" style="width: 100%">
+        <thead class="thead">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Username</th>
+            <th>PASSWORD</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Country</th>
+            <th>Registration date</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var student in Model.Students)
+        {
+            <tr>
+                <td class="text-center">@student.Id</td>
+                <td class="text-center">@student.Name</td>
+                <td class="text-center">@student.Surname</td>
+                <td class="text-center">@student.Username</td>
+                <td class="text-center">@student.Password</td>
+                <td class="text-center">@student.Age</td>
+                <td class="text-center">@student.Gender</td>
+                <td class="text-center">@student.Country</td>
+                <td class="text-center">@student.RegistrationDate</td>
+                <td>
+                    <a class="btn btn-primary" asp-controller="Home" asp-route-studentId="@student.Id" asp-action="Edit">Edit</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+else
+{
+    <p>No entries</p>
+}
+
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}

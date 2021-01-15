@@ -1,0 +1,50 @@
+@using LearningPlatform.Models.UserModels
+@model List<LearningPlatform.Models.CourseModels.Course>
+
+@{
+    ViewBag.Title = "Enrollments";
+    Layout = "_Layout";
+}
+
+<h2>Enrollments</h2>
+@if (ViewData["student"] != null)
+{
+    <p>@(((Student)ViewData["student"]).Name) @(((Student)ViewData["student"]).Surname)</p>
+}
+
+@if (Model.Any())
+{
+    <table class="table table-bordered table-hover table-striped" style="width: 100%">
+        <thead class="thead">
+        <tr>
+            <td></td>
+            <th>Name</th>
+            <th>Description</th>
+            <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var course in Model)
+        {
+            <tr>
+                  <td>
+                      <img src="~/images/@course.CoverImage"   
+                           class="rounded-circle"   
+                           height="40" width="40"   
+                           asp-append-version="true" />   
+                  </td>                      
+                <td class="text-center">@course.Name</td>
+                <td class="text-center">@course.Description</td>
+                <td>
+                        <a asp-route-courseId="@course.Id" asp-controller="Course" asp-action="ViewCourse" class="btn btn-info mx-2">View</a>
+                </td> 
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+else
+{
+    <p>No entries</p>
+}

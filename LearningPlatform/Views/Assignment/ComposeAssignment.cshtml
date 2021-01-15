@@ -1,0 +1,138 @@
+@using System.Linq
+@model LearningPlatform.ViewModels.StudyCourseViewModel
+
+@{
+    ViewBag.Title = "Editing sssignment";
+    Layout = "_LayoutNotInContainer";
+}
+
+<style>
+    #nav-container {
+    padding-left: 250px;
+    }
+</style>
+
+<div class="container-fluid" style="margin: 0; padding: 0;">
+    <div class="row-fluid">
+        <div class="wrapper" style="">
+
+            <partial name="_CourseNav"/>
+            <div style="margin-left: 265px;">
+                <a asp-controller="Assignment" asp-action="EditAssignment" asp-route-courseId="@Model.Course.Id"
+                   asp-route-moduleId="@Model.Module.Id" asp-route-assignmentId="@Model.Assignment.Id" class="btn btn-primary">
+                    Edit assignment
+                </a>
+
+                <form method="post" asp-action="SaveChanges" asp-route-assignmentId="@Model.Assignment.Id">
+                    <input hidden asp-for="Course.Id"/>
+                    <input hidden asp-for="Module.Id"/>
+                    @foreach (DateTime date in ViewBag.Timestamps)
+                    {
+                        var question = Model.Assignment.Questions.FirstOrDefault(q => q.CreationDate == date);
+                        var thought = Model.Assignment.Thoughts.FirstOrDefault(t => t.CreationDate == date);
+
+                        if (question != null)
+                        {
+                            <div class="row">
+                                <div class="col-8">
+                                    <input class="m-3 form-control" name="questionNameId@(question.Id)" asp-for="@question.Name"/>
+                                </div>
+                                <div class="col-2">
+                                    <input class="btn btn-primary m-3 form-control" type="submit" asp-action="SaveChanges" value="Add option" asp-route-actionName="addOption" asp-route-questionId="@question.Id" asp-route-assignmentId="@Model.Assignment.Id"/>
+                                </div>
+                                <div class="col-2">
+                                    <input class="btn btn-danger m-3 form-control" type="submit" asp-action="SaveChanges" value="Delete" asp-route-actionName="deleteQuestion" asp-route-questionId="@question.Id" asp-route-assignmentId="@Model.Assignment.Id"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <p>Maximum grade</p>
+                                </div>
+                                <div class="col-3">
+                                    <input type="number" min="0" class="form-control" name="questionMaxGradeId@(question.Id)" asp-for="@question.MaxGrade"/>
+                                </div>
+                            </div>
+                            <input asp-for="@question.Id" hidden/>
+                            <input asp-for="@question.AssignmentId" hidden/>
+                            foreach (var option in question.QuestionOptions)
+                            {
+                                <input asp-for="@option.Id" hidden/>
+                                <input asp-for="@option.QuestionId" hidden/>
+                                <div class="row">
+                                    @if (question.IsMultipleChoice)
+                                    {
+                                        @if (option.Correct)
+                                        {
+                                            <input id="@option.Id" class="ml-3 form-check-inline" name="questionOptionCorrectId@(option.Id)" type="checkbox" checked/>
+                                        }
+                                        else
+                                        {
+                                            <input id="@option.Id" class="ml-3 form-check-inline" name="questionOptionCorrectId@(option.Id)" type="checkbox"/>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        @if (option.Correct)
+                                        {
+                                            <input required id="@option.Id" class="ml-3 form-check-inline" value="@option.Id" type="radio" name="questionOptionCorrectQId@(question.Id)" checked/>
+                                        }
+                                        else
+                                        {
+                                            <input required id="@option.Id" class="ml-3 form-check-inline" value="@option.Id" type="radio" name="questionOptionCorrectQId@(question.Id)"/>
+                                        }
+                                    }
+                                    @* <div class="row"> *@
+                                    <div class="col-9">
+                                        <input type="text" class="m-1 form-control" asp-for="@option.Text" name="questionOptionTextId@(option.Id)"/>
+                                    </div>
+
+                                    <div class="col-2">
+                                        <input class="m-1 btn btn-danger form-control" type="submit" asp-action="SaveChanges" value="Delete" asp-route-assignmentId="@Model.Assignment.Id" asp-route-questionOptionId="@option.Id" asp-route-actionName="deleteQuestionOption"/>
+                                    </div>
+                                </div>
+                                <br/>
+                            }
+                        }
+                        else if (thought != null)
+                        {
+                            <input asp-for="@thought.AssignmentId" hidden/>
+                            <input asp-for="@thought.Id" hidden/>
+                            <div class="row">
+                                <div class="col-9">
+                                    <input name="thoughtNameId@(thought.Id)" class="m-3 form-control" type="text" asp-for="@thought.Name"/>
+                                </div>
+                                <div class="col-3">
+                                    <input class="m-3 btn btn-danger form-control" type="submit" asp-action="SaveChanges" value="Delete" asp-route-assignmentId="@Model.Assignment.Id" asp-route-thoughtId="@thought.Id" asp-route-actionName="deleteThought"/>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-3">
+                                    <p>Maximum grade</p>
+                                </div>
+                                <div class="col-3">
+                                    <input type="number" min="0" class="form-control" name="thoughtMaxGradeId@(thought.Id)" asp-for="@thought.MaxGrade"/>
+                                </div>
+                            </div>
+                            <textarea name="thoughtContentId@(thought.Id)" class="m-3 form-control" asp-for="@thought.Content"></textarea>
+                        }
+                    }
+
+                    <div class="btn-group">
+                        <input class="m-3 btn btn-primary form-control" type="submit" asp-action="SaveChanges" value="Add question" asp-route-assignmentId="@Model.Assignment.Id" asp-route-actionName="addQuestion"/>
+                        <input class="m-3 btn btn-primary form-control" type="submit" asp-action="SaveChanges" value="Add multiple choice question" asp-route-assignmentId="@Model.Assignment.Id" asp-route-actionName="addMultQuestion"/>
+                        <input class="m-3 btn btn-success form-control" type="submit" vasp-action="SaveChanges" value="Add thought" asp-route-assignmentId="@Model.Assignment.Id" asp-route-actionName="addThought"/>
+                        <input class="m-3 btn btn-success form-control" type="submit" asp-action="SaveChanges" value="Save changes" asp-route-assignmentId="@Model.Assignment.Id" asp-route-actionName="Save"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}

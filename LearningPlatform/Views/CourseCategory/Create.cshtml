@@ -1,0 +1,65 @@
+@model LearningPlatform.ViewModels.CreateCourseCategoryViewModel
+
+@{
+    ViewBag.Title = "Creating course category";
+    Layout = "_Layout";
+}
+
+<form enctype="multipart/form-data" method="post" asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="border p-3">
+        <div class="form-group row">
+            <h2 class="text-info pl-3">Add course category</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="CourseCategory.Name"></label>
+                    <input asp-for="CourseCategory.Name" class="form-control"/>
+                    <span asp-validation-for="CourseCategory.Name" class="text-danger"></span>
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+                <div class="col-6">
+                    <label asp-for="CoverPicture" class="control-label">Cover picture</label>
+                    <div class="custom-file">
+                        <input asp-for="CoverPicture" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">Choose cover picture</label>
+                    </div>
+                    <span asp-validation-for="CoverPicture" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-8 offset-4 row">
+                    <div class="col">
+                        <input type="submit" class="btn btn-info w-100" value="Create"/>
+                    </div>
+                    <div class="col">
+                        <a asp-action="Index" class="btn btn-primary btn-success w-100">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+
+    <script type="text/javascript">  
+            // Add the following code if you want the name of the file appear on select  
+            $(".custom-file-input").on("change", function () {  
+                var fileName = $(this).val().split("\\").pop();  
+                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);  
+            });  
+        </script>
+
+}

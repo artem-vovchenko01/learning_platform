@@ -1,8 +1,64 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using LearningPlatform.Services
+@{
+    ViewData["Title"] = "Welcome!";
 }
-
+<style>
+   .card-img-top {
+       width: 100%;
+       height: 15vw;
+       object-fit: cover;
+   } 
+</style>
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to Learning Platform!</h1>
 </div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <img class="card-img-top img-fluid" src="~/images/courses.png"
+                     alt="Card image cap"/>
+                <div class="card-body">
+                    <h4 class="card-title">Courses available</h4>
+                    <h4 class="card-text">@ViewBag.NumberOfCourses</h4>
+                    <a class="btn btn-primary" asp-controller="Course" asp-action="Index">Browse all</a>
+                        @if (StudentService.LoggedInStudent != null && !StudentService.IsAdmin)
+                        {
+                        <a asp-controller="Home" asp-route-studentId="@StudentService.LoggedInStudent.Id" asp-action="ViewEnrollments" class="btn btn-primary">My courses</a>
+                        }                   
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <img class="card-img-top img-fluid" src="~/images/students.jpg"
+                     alt="Card image cap"/>
+                <div class="card-body">
+                    <h4 class="card-title">Students registered</h4>
+                    <h4 class="card-text">@ViewBag.NumberOfStudents</h4>
+                    @if (StudentService.IsAdmin)
+                    {
+                        <a class="btn btn-primary" asp-controller="Admin" asp-action="Index">Check dashboard</a>
+                    }
+                    else if (StudentService.LoggedInStudent != null)
+                    {
+                        <a class="btn btn-primary" asp-controller="Home" asp-action="Edit">Visit profile</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-primary" asp-controller="Home" asp-action="Register">Sign up now</a>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}

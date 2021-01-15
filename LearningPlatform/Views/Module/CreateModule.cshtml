@@ -1,0 +1,65 @@
+@model LearningPlatform.ViewModels.StudyCourseViewModel
+
+@{
+    ViewBag.Title = "Create module";
+    Layout = "_LayoutNotInContainer";
+}
+<style>
+    #nav-container {
+    padding-left: 250px;
+    }
+</style>
+
+<div class="container-fluid" style="margin: 0; padding: 0;">
+    <div class="row-fluid">
+        <div class="wrapper" style="margin-left: 145px;">
+
+            <partial name="_CourseNav"/>
+            <div class="container">
+                <p>hello </p>
+                <form method="post" asp-route-courseId="@Model.Course.Id" asp-controller="Module" asp-action="CreateModule">
+                    <input asp-for="CreatedModule.Id" hidden/>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label asp-for="CreatedModule.Name"></label>
+                                    <input asp-for="CreatedModule.Name" class="form-control"/>
+                                    <span asp-validation-for="CreatedModule.Name" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label asp-for="CreatedModule.Description"></label>
+                                    <input asp-for="CreatedModule.Description" class="form-control"/>
+                                    <span asp-validation-for="CreatedModule.Description" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-8 offset-4 row">
+                                    <div class="col">
+                                        <input type="submit" class="btn btn-info w-100" value="Create"/>
+                                    </div>
+                                    <div class="col">
+                                        <a asp-action="Study" asp-controller="Course" asp-route-courseId="@Model.Course.Id" class="btn btn-primary btn-success w-100">Back</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}

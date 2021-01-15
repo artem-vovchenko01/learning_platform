@@ -1,0 +1,55 @@
+using LearningPlatform.Models.AnswerModels;
+using LearningPlatform.Models.AssignmentModels;
+using LearningPlatform.Models.ConnectionModels;
+using LearningPlatform.Models.CourseModels;
+using LearningPlatform.Models.ModuleModels;
+using LearningPlatform.Models.UserModels;
+using Microsoft.EntityFrameworkCore;
+
+namespace LearningPlatform.Data
+{
+    public class ApplicationDbContext : DbContext
+    {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        {
+            
+        }
+        
+        //public DbSet<Admin> Admins { get; set; }
+        
+        public DbSet<AnswerQuestionOption> AnswerQuestionOptions { get; set; }
+        public DbSet<AnswerThought> AnswerThoughts { get; set; }
+        public DbSet<AnswerAssignment> AnswerAssignments { get; set; }
+        public DbSet<Assignment> Assignments { get; set; }
+       // public DbSet<AssignmentItem> AssignmentItems { get; set; } 
+        public DbSet<CourseCategory> CourseCategories { get; set; }
+        public DbSet<CourseTeacher> CourseTeachers { get; set; }
+        public DbSet<Enrollment> Enrollments { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Lesson> Lessons { get; set; }
+        // public DbSet<ModuleItem> ModuleItems { get; set; }
+        public DbSet<Module> Modules { get; set; }
+        public DbSet<QuestionOption> QuestionOptions { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Review> Reviews { get; set; }
+        public DbSet<Student> Students { get; set; }
+        
+        public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<Thought> Thoughts { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //
+            // base.OnModelCreating(modelBuilder); 
+            // modelBuilder.Entity<IdentityUser>().ToTable("user");
+            // // modelBuilder.Entity<ApplicationUser>().ToTable("user");
+            //
+            // modelBuilder.Entity<IdentityRole>().ToTable("role");
+            // modelBuilder.Entity<IdentityUserRole<>().ToTable("userrole");
+            // modelBuilder.Entity<IdentityUserClaim>().ToTable("userclaim");
+            // modelBuilder.Entity<IdentityUserLogin>().ToTable("userlogin");
+            modelBuilder.Entity<Enrollment>()
+                .HasKey(e => new {e.CourseId, e.StudentId});
+        }
+    }
+}

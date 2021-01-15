@@ -1,0 +1,43 @@
+@using LearningPlatform.Services
+@model LearningPlatform.ViewModels.StudyCourseViewModel
+
+@{
+    ViewBag.Title = "View lesson";
+    Layout = "_LayoutNotInContainer";
+}
+
+<style>
+    #nav-container {
+    padding-left: 250px;
+    }
+</style>
+
+<div class="container-fluid" style="margin: 0; padding: 0;">
+    <div class="row-fluid">
+        <div class="wrapper" style="">
+
+            <partial name="_CourseNav"/>
+            <div style="margin-left: 265px;">
+                @if (StudentService.IsAdmin)
+                {
+                    <a class="btn btn-primary"
+                       asp-action="EditLesson"
+                       asp-route-courseId="@Model.Course.Id"
+                       asp-route-moduleId="@Model.Module.Id"
+                       asp-route-lessonId="@Model.Lesson.Id">
+                        Edit lesson
+                    </a>
+                }
+                <h1>@Model.Lesson.Name</h1>
+                <p class="text-body">@Model.Lesson.Content</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}
