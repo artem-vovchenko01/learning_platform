@@ -53,18 +53,25 @@ Script which is used to create database structure: [script.sql](./docker/script.
 
 # Screenshots
 
+- List of categories
 ![List of categories](./screenshots/categories_list.png)
 
+- List of courses
 ![List of courses](./screenshots/courses_list.png)
 
+- Adding a course
 ![Adding a course](./screenshots/adding_course.png)
 
+- Course profile
 ![Course profile](./screenshots/course_profile.png)
 
+- Sorting the courses
 ![Sorting the courses](./screenshots/courses_sort.png)
 
+- Editing the quiz
 ![Editing the quiz](./screenshots/quiz_editing.png)
 
+- Answering the quiz
 ![Answering the quiz](./screenshots/quiz_answering.png)
 
 # Database structure
