@@ -1,0 +1,14 @@
+version: "3"
+services:
+  mssql-db:
+    build:
+      context: .
+      dockerfile: ./mssql.Dockerfile
+    hostname: mssql-db
+  dotnet-web-app:
+    build:
+      context: .
+      dockerfile: ./dotnet-web-app.Dockerfile
+    hostname: dotnet-web-app
+    ports:
+      - "8080:80"
