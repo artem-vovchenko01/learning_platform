@@ -7,8 +7,8 @@ services:
     hostname: mssql-db
   dotnet-web-app:
     build:
-      context: .
-      dockerfile: ./dotnet-web-app.Dockerfile
+      context: ..
+      dockerfile: ./docker/dotnet-web-app.Dockerfile
     hostname: dotnet-web-app
     ports:
       - "8080:80"
